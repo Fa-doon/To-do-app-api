@@ -17,7 +17,9 @@ router.post("/create", authMiddleware.checkAuth, async (req, res) => {
   if (response.code === 201) {
     res.redirect("/task");
   } else {
-    res.send("Hello");
+    res.send({
+      message: `Please enter valid details`,
+    });
   }
 });
 

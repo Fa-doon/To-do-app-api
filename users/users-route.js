@@ -18,7 +18,9 @@ router.post("/signup", middleware.validateNewUser, async (req, res) => {
   if (userResponse.code === 201) {
     res.redirect("/login");
   } else {
-    res.redirect("/home");
+    res.send({
+      message: `User already exists`,
+    });
   }
 });
 
