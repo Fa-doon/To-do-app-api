@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const logger = require("../logger/index");
 require("dotenv").config();
 
 async function checkAuth(req, res, next) {
@@ -13,7 +14,8 @@ async function checkAuth(req, res, next) {
 
     next();
   } catch (error) {
-    console.log(error.message);
+    logger.error(error);
+    return res.status(500).send(`Something went wrong`);
   }
 }
 

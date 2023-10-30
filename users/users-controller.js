@@ -28,6 +28,8 @@ async function createUser({ username, email, password }) {
       newUser,
     };
   } catch (error) {
+    logger.error(error);
+    res.status(500).send(`Something went wrong!`);
     return {
       message: `Server error`,
       eeror: error,
@@ -74,6 +76,7 @@ async function login({ email, password }) {
     };
   } catch (error) {
     logger.error(error);
+    res.status(500).send(`Something went wrong!`);
     return {
       message: `Something went wrong`,
       code: 500,

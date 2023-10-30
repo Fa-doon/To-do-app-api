@@ -44,6 +44,7 @@ async function createTask(taskData) {
     };
   } catch (error) {
     logger.error(error);
+    res.status(500).send(`Something went wrong!`);
     return {
       message: "Something went wrong",
       code: 500,
@@ -71,6 +72,7 @@ async function completeTask(taskId, userId) {
     };
   } catch (error) {
     logger.error(error);
+    res.status(500).send(`Something went wrong!`);
     return {
       message: "Task completion failed",
       code: 500,
@@ -97,6 +99,7 @@ async function deleteTask(taskId, userId) {
     };
   } catch (error) {
     logger.error(error);
+    res.status(500).send(`Something went wrong!`);
     return {
       message: "Task deletion failed",
       code: 500,
