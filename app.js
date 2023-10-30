@@ -61,4 +61,12 @@ app.get("/logout", (req, res) => {
   res.redirect("home");
 });
 
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).json({
+    data: null,
+    error: "Server Error",
+  });
+});
+
 module.exports = app;
