@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      h1 {
+        display: flex;
+        justify-content: end;
+        margin: 20px 60px 0 0;
+        color: #080808b7;
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        width: 50%;
+        margin: 80px 0 0 60px;
+        color: #080808b7;
+        font-size: 2rem;
+      }
+      table {
+        font-family: sans-serif;
+        border-collapse: collapse;
+        width: 60%;
+        margin: 80px auto;
+      }
+
+      td,
+      th {
+        text-align: left;
+        padding: 15px;
+        border-bottom: 1px solid #c4c4c4b7;
+      }
+
+      .delete-btn {
+        background-color: #ac0b0b;
+        color: white;
+        padding: 7px 15px;
+        border: none;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+      .MAC {
+        background-color: #23ad5c;
+        color: white;
+        padding: 7px 15px;
+        border: none;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <header><%- include("partials/header.ejs") -%></header>
+    <h1><%= Day %></h1>
+
+    <% if(user) { %>
+    <h2>Hello <%= user.username %> , welcome to your dashboard!</h2>
+
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+      <% tasks.forEach(function (task){ %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.description %></td>
+        <td><%= task.status %></td>
+        <td>
+          <% if (task.status === 'pending') { %>
+
+          <form method="post" action="/tasks/complete-task/<%= task._id %>">
+            <button class="MAC" type="submit">Mark as Completed</button>
+          </form>
+          <% } else if (task.status === 'completed') { %>
+
+          <p>Completed</p>
+
+          <form method="post" action="/tasks/delete-task/<%= task._id %>">
+            <button class="delete-btn" type="submit">Delete</button>
+          </form>
+          <% } %>
+        </td>
+      </tr>
+      <% }); %>
+    </table>
+    <% } else { %>
+    <h2>You are not logged in. Please log in to access your tasks.</h2>
+    <% } %>
+  </body>
+</html>

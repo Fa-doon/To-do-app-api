@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      main {
+        width: 90%;
+        margin: 100px auto;
+        text-align: center;
+      }
+      main h2 {
+        font-size: 4rem;
+        margin: 70px;
+        color: #080808b7;
+      }
+      a {
+        text-decoration: none;
+      }
+      main .button-link {
+        padding: 15px 25px;
+        border: none;
+        background-color: #282147;
+        color: whitesmoke;
+        border-radius: 5px;
+      }
+      main .button-link:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <%-include("partials/header.ejs") -%>
+
+    <main>
+      <h2>Your best task organizer</h2>
+      <a href="/login" class="button-link">Get started</a>
+    </main>
+  </body>
+</html>

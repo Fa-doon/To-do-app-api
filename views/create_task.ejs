@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #f8fcff;
+      }
+      h1 {
+        display: flex;
+        justify-content: end;
+        margin: 20px 60px 0 0;
+        color: #080808b7;
+        font-size: 1.5rem;
+      }
+      .create {
+        width: 50%;
+        margin: auto;
+      }
+      .block {
+        display: block;
+      }
+      .inp {
+        padding: 10px 4px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+      }
+      form {
+        width: 60%;
+        padding: 30px 30px;
+        margin: 150px auto;
+        background-color: #282147;
+        color: white;
+        border-radius: 5px;
+      }
+      .title {
+        width: 80%;
+      }
+      .desc {
+        width: 80%;
+      }
+      .container {
+        margin-top: 20px;
+      }
+      .container label {
+        margin-bottom: 5px;
+      }
+      button {
+        padding: 8px 8px;
+        background-color: #08d;
+        color: white;
+        border-radius: 5px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <%-include("partials/header.ejs") -%>
+    <h1><%= Day %></h1>
+
+    <div class="create">
+      <form action="/tasks/create" method="post">
+        <h3>Create task</h3>
+        <div class="container">
+          <label class="block" for="title">Title</label>
+          <input class="block inp title" type="text" id="title" name="title" />
+        </div>
+        <div class="container">
+          <label class="block" for="description">Description</label>
+          <textarea class="block inp desc" name="description" id="description"></textarea>
+        </div>
+        <div>
+          <button class="block container" type="submit">Add task</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
