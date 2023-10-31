@@ -36,7 +36,7 @@ app.get("/signup", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("login", { navs: ["Home", "Logout"] });
+  res.render("login", { navs: ["Home", "Signup"] });
 });
 
 // Defining date variables
